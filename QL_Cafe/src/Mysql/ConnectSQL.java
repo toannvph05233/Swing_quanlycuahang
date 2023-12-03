@@ -1307,6 +1307,24 @@ public class ConnectSQL {
         }
         return check; 
     }
+    public boolean CheckUsername(String username)
+    {
+        boolean check = false;
+        String sql;
+            sql = "Select * From taikhoan Where username = '"+username;
+        try{
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                check = true;
+            }
+        }catch(SQLException ex){
+//            JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi !");
+             return check; 
+        }
+        return check; 
+    }
     
     
     // Tài khoản
@@ -1417,6 +1435,7 @@ public class ConnectSQL {
             insert = st.executeUpdate(sql);
             
         }catch(SQLException ex){
+            ex.printStackTrace();
         }
         return insert;
     } 

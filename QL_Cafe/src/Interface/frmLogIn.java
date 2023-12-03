@@ -15,7 +15,9 @@ import javax.swing.JRootPane;
  * @author LONG
  */
 public class frmLogIn extends javax.swing.JFrame {
+
     ConnectSQL cn = new ConnectSQL();
+
     /**
      * Creates new form frmLogIn
      */
@@ -42,6 +44,7 @@ public class frmLogIn extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
         txtPassWord = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,7 +68,7 @@ public class frmLogIn extends javax.swing.JFrame {
                 btnLogInActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 110, -1));
+        jPanel1.add(btnLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 110, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Username");
@@ -89,11 +92,19 @@ public class frmLogIn extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 90, -1));
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 90, -1));
         jPanel1.add(txtPassWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 210, 27));
 
+        jButton1.setText("Đăng ký");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Images/nendangnhap.jpg"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 300));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 0, 500, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,7 +114,7 @@ public class frmLogIn extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -116,10 +127,10 @@ public class frmLogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
-       
+
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
-    public void thoat(){
+    public void thoat() {
         txtPassWord.setText("");
         txtPassWord.requestFocus();
     }
@@ -134,20 +145,27 @@ public class frmLogIn extends javax.swing.JFrame {
         tk.SetPassword(pass);
         boolean check = cn.CheckLogin(tk);
         int lv = cn.LVTK(tk);
-        if(check == true){
+        if (check == true) {
             Run.tk = cn.GetTaiKhoan(user, pass);
             this.setVisible(false);
             Run.QLCF();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Tài khoản hoặc mật khẩu không đúng", "Login Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnLogInActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        frmRegister fRegister = new frmRegister();
+        fRegister.setVisible(true);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLogIn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
